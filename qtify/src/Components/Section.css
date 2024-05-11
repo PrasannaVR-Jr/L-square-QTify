@@ -1,0 +1,29 @@
+.Section
+{
+    margin-left: 1%;
+    padding-bottom: 20px;
+}
+.Top
+{
+    display: flex;
+}
+.Section h3{
+    color: white;
+    width: 100%;
+}
+
+.Section .TopBtn{
+    background-color: transparent;
+    color:#01b59a;
+    margin-right: 1%;
+}
+.Section .TopBtn:hover{
+    color: #8dfdec;
+}
+
+.CardSection
+{
+    display: grid;
+    grid-template-columns: repeat(8,auto);
+    grid-row-gap: 20px;
+}

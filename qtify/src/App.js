@@ -1,5 +1,6 @@
 import './App.css';
 import NavBar from './Components/NavBar'
+import Section from './Components/Section';
 import correcthero from './assets/heroimagecorrect.png'
 function App() {
   return (
@@ -10,8 +11,13 @@ function App() {
       
       </header>
       <body>
-      <div className='heroimage'><img  src={correcthero} alt='heroimagealt'/></div>
-
+      <div className='heroimage'><img  src={correcthero} alt='heroimagealt' width='500px'/></div>
+      <div>
+        <Section sectionName='Top Albums' APIlink='https://qtify-backend-labs.crio.do/albums/top'/>
+        <div className='Line'></div>
+        <Section sectionName='New Albums' APIlink='https://qtify-backend-labs.crio.do/albums/new'/>
+        <div className='Line'></div>
+      </div>
     </body>
     </div>
     
