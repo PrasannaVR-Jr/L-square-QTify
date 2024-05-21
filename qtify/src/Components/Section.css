@@ -1,6 +1,7 @@
 .Section
 {
     margin-left: 1%;
+    margin-right: 1%;
     padding-bottom: 20px;
 }
 .Top
@@ -21,9 +22,14 @@
     color: #8dfdec;
 }
 
-.CardSection
+.GridSection 
 {
     display: grid;
     grid-template-columns: repeat(8,auto);
     grid-row-gap: 20px;
+}
+
+.CarouselSection{
+    margin-left: 0px;
+    margin-right: 0px;
 }
