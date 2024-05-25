@@ -5,12 +5,17 @@ import axios from "axios";
 import {Swiper,SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
 import 'swiper/css';
+import CorouselView from './Corousel';
 import "./CarouselNavigation.css";
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import GenreTabs from './GenreTabs';
 
 function Section({sectionName="Top Albums",APIlink="https://qtify-backend-labs.crio.do/albums/top"})
 {
     const [albums,setAlbums]=useState([]);
-    const [isCollapsed,setCollapsedView]=useState(false);
+    const [isCollapsed,setCollapsedView]=useState(true);
 
 
     useEffect(()=>{
@@ -19,7 +24,7 @@ function Section({sectionName="Top Albums",APIlink="https://qtify-backend-labs.c
         })
     },[]);
 
-    const GridView=()=>{
+    const GridView=({isSongSection=false})=>{
        const items= albums.map(
             (album)=>(
                 <div><Card imgURL={album.image} noFollows={album.follows} name={album.title}/></div>
@@ -29,36 +34,44 @@ function Section({sectionName="Top Albums",APIlink="https://qtify-backend-labs.c
         return (<div className='GridSection'>{items}</div>);
     }
 
-    const CorouselView=()=>{
-        const items = albums.map((album)=>(
-            <SwiperSlide><Card imgURL={album.image} noFollows={album.follows} name={album.title}/></SwiperSlide>
-        )
-        );
 
-        return (
-        <Swiper 
-        slidesPerView={8}
-        centeredSlides={false}
-        spaceBetween={30}
-        navigation={true}
-        modules={[Navigation]}
-        className='CarouselSection'>
-            {items}
-        </Swiper>
-        );
-    };
+    let content;
+
+    if(sectionName==="Songs")
+    {
+
+        content=(<div className='Section'>
+        <div class="Top">
+        <h3>{sectionName}</h3>
+        
+    </div>
+    {/* Tab part */}
+    <GenreTabs songs={albums}/>
+    
+
+    
+    </div>)
+
+    }
+    else
+    {
+        content=(<div className='Section'>
+        <div class="Top">
+        <h3>{sectionName}</h3>
+
+        <button class="TopBtn" onClick={()=>setCollapsedView(!isCollapsed)}>{isCollapsed?'Expand':'Collapse'}</button>
+        
+    </div>
+        {isCollapsed?<CorouselView objects={albums}/>:<GridView/>}
+    </div>
+    )
+    }
 
     return (
-        <div class="Section">
-            <div class="Top">
-                <h3>{sectionName}</h3>
-                <button class="TopBtn" onClick={()=>setCollapsedView(!isCollapsed)}>{isCollapsed?'Expand':'Collapse'}</button>
-            </div>
-            
-            {isCollapsed?<CorouselView/>:<GridView objects={albums}/>}
-            
-                        
-        </div>
+        <>
+            {content}
+        </>    
+        
     );
 }
 

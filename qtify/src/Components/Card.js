@@ -2,7 +2,9 @@ import "./Card.css"
 
 function Card({ imgURL="https://images.pexels.com/photos/1366957/pexels-photo-1366957.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800"
 , noFollows=100, 
-name="Shoddy Excuse" })
+noLikes=0,
+name="Shoddy Excuse" ,
+isSongCard=false})
 {
 
     return(
@@ -10,7 +12,7 @@ name="Shoddy Excuse" })
             <div class="Card">
                 <img src={imgURL} alt={name}/>
                 <div class="container">
-                <button>{`${noFollows} Follows`}</button>
+                <button>{isSongCard?`${noLikes} Likes`:`${noFollows} Follows`}</button>
                 </div>
                 
             </div>

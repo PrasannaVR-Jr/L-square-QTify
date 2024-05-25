@@ -17,6 +17,8 @@ function App() {
         <div className='Line'></div>
         <Section sectionName='New Albums' APIlink='https://qtify-backend-labs.crio.do/albums/new'/>
         <div className='Line'></div>
+        <Section sectionName='Songs' APIlink='https://qtify-backend-labs.crio.do/songs'/>
+        <div className='Line'></div>
       </div>
     </body>
     </div>
